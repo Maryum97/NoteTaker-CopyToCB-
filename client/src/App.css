@@ -42,9 +42,9 @@ button {
 }
 
 .close {
-  animation: slide 0.5s backwards;
+  animation: fadeOut 0.5s forwards;
 }
 
-@keyframes slide {
-  100% { right: 0; }
+@keyframes fadeOut {
+  100% { opacity: 0; }
 }

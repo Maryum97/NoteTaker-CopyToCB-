@@ -7,9 +7,9 @@ function App() {
   const textAreaRef = useRef(null);
 
   // function to change classname of the 'X' button
-  function closeMsg() {
-    var element = document.getElementsByClassName('success-message');
-    element.classList.toggle('close');
+  function closeMsg(e) {
+    // var element = document.getElementsByClassName('success-message');
+    e.target.classList.toggle('close');
   }
 
   // function to copy text and make success message appear
