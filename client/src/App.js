@@ -8,7 +8,6 @@ function App() {
 
   // function to change classname of the 'X' button
   function closeMsg(e) {
-    // var element = document.getElementsByClassName('success-message');
     e.target.parentElement.classList.toggle('close');
   }
 
