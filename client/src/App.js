@@ -3,27 +3,38 @@ import './App.css';
 
 function App() {
   // states to copy text
-  const [copySucess, setCopySuccess] = useState('');
+  const [copySuccess, setCopySuccess] = useState('');
+  const [showAlert, setShowAlert] = useState(false);
   const textAreaRef = useRef(null);
 
   // function to return a success message
   function sucessMsg() {
-    return (
-      <div className='success-message'>
-        <button
-          className='cross'
-          onClick={closeMsg}
-        >
-          X
-        </button>
-        <h1>Copied!</h1>
-      </div>
-    )
+    if (showAlert) {
+      return (
+        <div className='success-message'>
+          <button
+            className='cross'
+            onClick={closeMsg}
+          >
+            X
+          </button>
+          <h1>Copied!</h1>
+        </div>
+      )
+    }
+
+    else {
+      return (
+        <div></div>
+      )
+    }
   }
 
   // function to change classname of the 'X' button
   function closeMsg(e) {
-    e.target.parentElement.classList.toggle('close');
+    // e.target.parentElement.classList.toggle('close');
+    setShowAlert(false);
+    setCopySuccess(sucessMsg);
   }
 
   // function to copy text and make success message appear
@@ -32,6 +43,7 @@ function App() {
     document.execCommand('copy');
     e.target.focus();
     setCopySuccess(sucessMsg);
+    setShowAlert(true);
   }
 
   return (
@@ -47,7 +59,7 @@ function App() {
         >
           Copy Text to Clipboard
         </button>
-        {copySucess}
+        {copySuccess}
       </div>
     </div>
   );
